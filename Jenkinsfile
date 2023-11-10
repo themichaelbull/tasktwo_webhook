@@ -10,7 +10,7 @@ pipeline {
                 sh "docker rmi -f \$(docker images) || true"
                 sh "docker rm -f \$(docker ps -aq) || true"
                 sh "docker rmi -f \$(docker images) || true"
-                sh "docker network delete new-network || true"
+                sh "docker network rm new-network || true"
             }
         }
         stage('Clone Repo'){
