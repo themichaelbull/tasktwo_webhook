@@ -14,7 +14,7 @@ pipeline {
         stage('build'){
             steps {
                 sh "docker network create -d bridge new-network"
-                h "git clone https://github.com/themichaelbull/tasktwo_webhook"
+                sh "git clone https://github.com/themichaelbull/tasktwo_webhook"
                 sh "ls"
                 sh "cd tasktwo_webhook"
                 sh" ls"
