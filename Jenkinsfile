@@ -24,6 +24,7 @@ pipeline {
         stage('run'){
             steps {
                 sh "docker run -d --name mysqldatabase --network new-network --mount type=volume,source=dbvolume,target=/var/lib/mysql mysqldatabase"
+                sh "docker run -dt -p 80:80 --network new-network --name nginx --mount type=bind,source=$(pwd)/nginx/nginx.conf,target=/etc/nginx/nginx.conf nginx"
             }
         }
     }
