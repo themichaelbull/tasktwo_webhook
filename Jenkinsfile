@@ -27,7 +27,7 @@ pipeline {
                 sh "docker run -dt --name myapp myapp --network new-network"
                 sh "docker network disconnect bridge myapp"
                 sh "docker network connect new-network myapp"
-                sh "cd tasktwo_webhook/nginx && pwd && docker run -idt -p 80:5000 --name nginxapp --network=new-network --mount type=bind,source=/var/lib/jenkins/workspace/tasktwo_webhook/tasktwo_webhook/nginx/nginx.conf,target=/etc/nginx/nginx.conf nginxapp"
+                sh "cd tasktwo_webhook/nginx && pwd && docker run -idt -p 80:5500 --name nginxapp --network=new-network --mount type=bind,source=/var/lib/jenkins/workspace/tasktwo_webhook/tasktwo_webhook/nginx/nginx.conf,target=/etc/nginx/nginx.conf nginxapp"
             }
         }
     }
