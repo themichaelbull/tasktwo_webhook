@@ -17,7 +17,7 @@ pipeline {
                 sh "git clone https://github.com/themichaelbull/tasktwo_webhook"
                 sh "ls"
                 sh "cd tasktwo_webhook/nginx && docker build -t nginxapp . -f Dockerfile --no-cache "
-                sh "cd tasktwo_webhook/flaskapp && -t myapp . --no-cache"
+                sh "cd tasktwo_webhook/flask-app && -t myapp . --no-cache"
             }
         }
     }
