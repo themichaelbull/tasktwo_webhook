@@ -18,6 +18,7 @@ pipeline {
                 sh "ls"
                 sh "cd tasktwo_webhook/nginx && docker build -t nginxapp . -f Dockerfile --no-cache "
                 sh "cd tasktwo_webhook/flask-app && docker build -t myapp . --no-cache"
+                sh "cd tasktwo_webhook/db && docker build -t mysqldatabase . --no-cache"
             }
         }
     }
