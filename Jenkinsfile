@@ -22,8 +22,8 @@ pipeline {
         }
         stage('build'){
             steps {
-                sh "docker network create -d bridge new-network
-                sh "docker build \-t nginxapp . \-f nginx/Dockerfile \--no-cache" 
+                sh "docker network create -d bridge new-network"
+                sh "docker build -t nginxapp . -f nginx/Dockerfile --no-cache" 
             }
         }
     }
