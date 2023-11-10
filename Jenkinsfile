@@ -21,5 +21,10 @@ pipeline {
                 sh "cd tasktwo_webhook/db && docker build -t mysqldatabase . --no-cache"
             }
         }
+        stage('run'){
+            steps {
+                sh "docker run -d --name mysqldatabase --network new-network --mount type=volume,source=dbvolume,target=/var/lib/mysql mysqldatabase"
+            }
+        }
     }
 }
