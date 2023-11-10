@@ -29,5 +29,16 @@ pipeline {
                 sh "cd tasktwo_webhook/nginx && pwd && docker run -idt -p 80:80 --name nginxapp --network=new-network --mount type=bind,source=/var/lib/jenkins/workspace/tasktwo_webhook/tasktwo_webhook/nginx/nginx.conf,target=/etc/nginx/nginx.conf nginxapp"
             }
         }
+        stage('Do'){
+            steps{
+                sh "echo \$DOCKERHUB_CREDENTIALS_PSW | docker login -u \$DOCKERHUB_CREDENTIALS_USR --password-stdin"
+                sh "docker tag nginxapp michaelbull3/nginxapp:latest"
+                sh "docker push michaelbull3/nginxapp:latest"
+                sh "docker tag nginxapp michaelbull3/myapp:latest"
+                sh "docker push michaelbull3/myapp:latest"
+                sh "docker tag nginxapp michaelbull3/mysqldatabase:latest"
+                sh "docker push michaelbull3/mysqldatabase:latest"
+            }
+        }
     }
 }
