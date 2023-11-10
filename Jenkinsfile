@@ -16,7 +16,7 @@ pipeline {
                 sh "docker network create -d bridge new-network"
                 sh "git clone https://github.com/themichaelbull/tasktwo_webhook"
                 sh "ls"
-                sh "cd tasktwo_webhook && docker build -t nginxapp . -f nginx/Dockerfile --no-cache "
+                sh "cd tasktwo_webhook/nginx && docker build -t nginxapp . -f nginx/Dockerfile --no-cache "
             }
         }
     }
