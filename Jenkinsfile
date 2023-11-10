@@ -11,13 +11,6 @@ pipeline {
                 sh "docker network rm new-network || true"
             }
         }
-        stage('Clone Repo'){
-            steps {
-                sh "git clone https://github.com/themichaelbull/tasktwo_webhook"
-                sh "cp -r tasktwo_webhook/* ./"
-                sh "ls"
-            }
-        }
         stage('build'){
             steps {
                 sh "docker network create -d bridge new-network"
