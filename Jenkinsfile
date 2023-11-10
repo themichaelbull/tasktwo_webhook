@@ -12,9 +12,10 @@ pipeline {
                 sh "docker rmi -f \$(docker images) || true"
             }
         }
-        stage('Docker Run'){
+        stage('Clone Repo'){
             steps {
-                sh 'ls'
+                sh "git clone https://github.com/themichaelbull/tasktwo_webhook"
+                sh "ls"
             }
         }
     }
