@@ -14,8 +14,10 @@ pipeline {
         stage('build'){
             steps {
                 sh "docker network create -d bridge new-network"
-                sh "pwd"
+                h "git clone https://github.com/themichaelbull/tasktwo_webhook"
                 sh "ls"
+                sh "cd tasktwo_webhook"
+                sh" ls"
                 sh "docker build -t nginxapp . -f nginx/Dockerfile --no-cache" 
             }
         }
