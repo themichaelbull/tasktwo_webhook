@@ -24,7 +24,7 @@ pipeline {
         stage('run'){
             steps {
                 sh "docker run -d --name mysqldatabase --network new-network --mount type=volume,source=dbvolume,target=/var/lib/mysql mysqldatabase"
-                sh "cd tasktwo_webhook/nginx && pwd"
+                sh "cd tasktwo_webhook/nginx && pwd && docker run -d -p 80:80 --name nginxapp --network new-network --mount type=bind,source=/var/lib/jenkins/workspace/tasktwo_webhook/tasktwo_webhook/nginx/nginx.conf,target=/etc/nginx/nginx.conf nginxapp"
             }
         }
     }
